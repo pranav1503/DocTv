@@ -1,0 +1,70 @@
+{% extends "dash.html "%}
+
+{% block dash_content %}
+
+<!--*********************** for super user only  ************************************-->
+
+{% if user.is_superuser %}
+
+{% url 'dashboard:verify' as verify %}
+{% if request.get_full_path == verify %}
+
+{% if not_verified %}
+
+{% for i in not_verified %}
+	<hr>
+	<h3>First Name: {{ i.user.first_name }}<br>Last Name: {{ i.user.last_name }} <br>Register Number: {{ i.reg_num }}<br></h3>
+	<a href="{% url 'dashboard:verified' pk=i.pk %}" class="btn btn-lg btn-danger">Verify</a>
+	<hr style="background-color:black">
+{% endfor %}
+
+{% else %}
+	<h1>All doctors are verified.</h1>
+{% endif %}
+
+
+{% else %}
+
+<a href="{% url "dashboard:verify" %}" class="btn btn-lg btn-danger"><h1>Verify The Doctors!</h1>(click here)</a>
+
+{% endif %}
+
+
+<!--*********************** for doctors only  ************************************-->
+
+
+{% elif user.doctor %}
+	<h1>Welcome Dr.{{ user.first_name }} {{ user.last_name }}</h1>
+
+	{% if user.doctor.verify == "no" %}
+		<marquee><h3>You are yet to be verified.</h3></marquee>
+
+	{% else %}
+
+	<h3>You are a verified doctor.</h3>
+	<div style="margin:auto;width:100%;">
+		<a href="{% url 'timeslots:list' %}" class="btn btn-sm btn-danger" style="width:100%;font-size:10%"><h1>Add Time Slot<br>+</h1></a>
+		<a href="#" class="btn btn-primary" style="width:100%;margin-top:10px;"><h1>View All Appointments<br>&nbsp;</h1></a>
+	</div>
+
+	{% endif %}
+<hr size="100">
+
+
+
+
+
+<!--*********************** for patients only  ************************************-->
+
+
+{% else %}
+	<h1>Hello {{ user.username }},</h1>
+
+		<br><br>
+
+<div style="margin:auto;width:100%;">
+	<a href="#" class="btn btn-sm btn-danger" style="width:100%;font-size:10%"><h1>New Appointment<br>+</h1></a>
+	<a href="#" class="btn btn-primary" style="width:100%;margin-top:10px;"><h1>Past Appointment<br>(All)</h1></a>
+</div>
+{% endif %}
+{% endblock %}

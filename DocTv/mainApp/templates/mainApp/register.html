@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="signup-box">
+ <div class="left">
+   <h1>Sign up</h1>
+   <p style="color:red;">{{ message }}</p>
+   <form method="post">
+     {% csrf_token %}
+     {{ user }}
+     <input type="submit" name="signup_submit" value="Sign me up" />
+
+   </form>
+    </div>
+
+ <div class="right">
+   <span class="loginwith">Sign in with<br />social network</span>
+
+   <button class="social-signin facebook">Sign in with facebook</button>
+   <button class="social-signin twitter">Sign in with Twitter</button>
+   <button class="social-signin google">Sign in with Google+</button>
+ </div>
+ <div class="or">OR</div>
+</div>
+
+{% endblock %}

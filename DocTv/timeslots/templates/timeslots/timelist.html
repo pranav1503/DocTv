@@ -1,0 +1,18 @@
+{% extends "dash.html "%}
+
+{% block dash_content %}
+<h1>Welcome Dr.{{ user.first_name}} {{ user.last_name }}</h1>
+<br><br><br>
+<ol>
+{% for list in time_slot_list %}
+  <div class="jumbotron" style="margin:auto; width:60%">
+    <li style="font-size:40px">
+      <h2>Time Slot Unbooked</h2>
+      <h3>{{ list.time_slot_available }}</h3>
+      </li>
+  </div>
+  {% empty %}
+    <h3>No time-slots added.</h3>
+{% endfor %}
+</ol>
+{% endblock %}

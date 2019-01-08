@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="top-img-container" style="">
+      <img class="top-img" src="{% static "image/docHome1.jpg" %}">
+    <div class="top-img-text">
+      <h1 class="top-img-text-heading"><span style="color: #ff2a00;font-family: 'Holtwood One SC', serif;">Doc</span><span style="color: blue;font-family: 'Donegal One', serif;">.TV</span></h1>
+      <h1 class="top-img-text-heading-sub">Get Appointment of a Doctor with a single touch</h1>
+      {% if user.is_authenticated %}
+      <meta http-equiv="REFRESH" content="0;url={% url 'dashboard:dash' %}">
+      <a class="top-img-text-btn" href="{% url 'dashboard:dash' %}">Dashboard</a>
+      {% else %}
+      <a class="top-img-text-btn" href="{% url 'mainApp:register' %}">Register Now</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+<div id="services" style="background-color:white;">
+    <h1 align="center" class="service-head" style="font-size:70px;padding-top:80px;">Services We Provide</h1>
+    <div style="margin:auto;width:80%;margin-top:6em;" >
+      <div class="row">
+        <div class="col">
+          <h1 style="font-size:50px;"><i class="fas fa-video"></i> Video Consultation</h1>
+          <p style="font-size:30px;">Online Video Consultation with the doctor of your choice</p>
+          <br><br><hr>
+        </div>
+        <div class="col">
+          <h1 style="font-size:50px;"><i class="fas fa-file-prescription"></i> Track your Prescription</h1>
+          <p style="font-size:30px;">Keep record of all prescription and access it anytime anywhere<br></p>
+          <br><br><hr>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <h1 style="font-size:50px;"><i class="fas fa-user-md"></i> Get Suggested Doctor</h1>
+          <p style="font-size:30px;">Our website can suggest you the doctors that suits you the best.<br></p>
+          <br><br><hr>
+        </div>
+
+        <div class="col">
+          <h1 style="font-size:50px;"><i class="fas fa-user-check"></i> First Checkup Free!</h1>
+          <p style="font-size:30px;">Get your first consultation done for free<br>and much more...</p>
+          <br><br><hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

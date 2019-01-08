@@ -1,0 +1,66 @@
+<!Doctype html>
+{% load staticfiles %}
+{% load socialaccount %}
+<html style="scroll-behavior: smooth;">
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Donegal+One|Holtwood+One+SC|Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static "css/index.css" %}" type="text/css">
+</head>
+
+<body>
+		<div class="nav-ul-comp" style="border-bottom: 1px solid black;">
+			<ul class="nav-ul-comp">
+						<li><a style="font-size: 40px;border: none;" class="navbar-brand" href="{% url 'mainApp:home' %}"><span style="color: #ff4300;font-family: 'Holtwood One SC', serif;">Doc</span><span style="color: blue;font-family: 'Donegal One', serif;">.TV</span></a></li>
+						{% if user.is_authenticated %}
+						<li style="float:right;margin-top: 10px;"><a>Welcome:{{ user.username }}</a></li>
+						<li style="float:right;margin-top: 10px;"><a href="{% url 'mainApp:logout' %}">Logout</a></li>
+						{% else %}
+  					<li style="float:right;margin-top: 10px;"><a href="#home">About us</a></li>
+  					<li style="float:right;margin-top: 10px;"><a href="{% url 'mainApp:home' %}#services">Services</a></li>
+  					<li style="float:right;margin-top: 10px;"><a href="{% url 'mainApp:login' %}">Login</a></li>
+  					<li style="float:right;margin-top: 10px;"><a href="{% url 'mainApp:register' %}">Patients-Register</a></li>
+						<li style="float:right;margin-top: 10px;"><a href="{% url 'mainApp:registerD' %}">Doc's Register</a></li>
+						{% endif %}
+			</ul>
+		</div>
+
+		<div class="nav-ul-mobile" style="border-bottom: 1px solid black;">
+			<ul class="nav-ul-mobile">
+					<li><a style="font-size: 7vh;" class="navbar-brand" href="#"><span style="color: #ff4300;font-family: 'Holtwood One SC', serif;">Doc</span><span style="color: blue;font-family: 'Donegal One', serif;">.TV</span></a></li>
+					<li style="float:right;margin-top: 10px;"><button id="myHam" class="hambtn" onclick="hambtn()" style="font-size: 7vh;cursor: pointer;background-color:white;border:none;" >&#x2630;</button>
+			</ul>
+		</div>
+
+		<div class="nav-options-mobile" style="">
+			<p><a href="#home">About us</a></p><br><hr><br>
+  		<p><a href="#services">Services</a></p><br><hr><br>
+			<p><a href="#contact">Login</a></p><br><hr><br>
+  		<p><a href="{% url 'mainApp:register' %}">Register</a></p><br><hr><br>
+		</div>
+
+    {% block content %}
+
+    {% endblock %}
+    <script type="text/javascript">
+
+var options = document.querySelector('.nav-options-mobile')
+
+function hambtn(){
+
+	if(	options.style.display == "none"){
+		options.style.display = "block";
+		document.querySelector("#myHam").value = "X";
+	}else{
+		options.style.display = "none";
+	}
+}
+
+    </script>
+
+<script type="text/javascript" src="{% static "js/demo.js" %}">
+
+</script>
+</body>
+</html>

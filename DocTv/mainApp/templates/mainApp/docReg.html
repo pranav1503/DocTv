@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="signup-box">
+ <div class="left">
+   <h1>Sign up</h1>
+   <p style="color:red;">{{ message }}</p>
+   <form method="post">
+     {% csrf_token %}
+     {{ user }}
+     {{ reg }}
+     <input type="submit" name="signup_submit" value="Sign me up" />
+
+   </form>
+    </div>
+
+ <div class="right">
+    <span class="loginwith"><br><br> </span>
+    <span class="loginwith" style="color:black;">You will Not be able to appoint till you are verified</span>
+ </div>
+ <div class="or">AND</div>
+</div>
+
+{% endblock %}

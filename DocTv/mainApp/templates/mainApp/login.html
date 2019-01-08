@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+{% include "base.html" %}
+
+{% block content %}
+<div id="login-box">
+ <div class="left">
+   <h1>Login</h1>
+   <p style="color:red;">{{ message }}</p>
+   <form method="post">
+     {% csrf_token %}
+     <input type="text" name="usernameL" value="" placeholder="Username">
+     <input type="password" name="passwordL" id="passbox" value="" placeholder="Password">
+     <input type="checkbox" onclick="viewPass()" name="" value="">View Password
+     <input type="submit" name="signup_submit" value="Login" />
+
+   </form>
+    </div>
+
+ <div class="right">
+   <span class="loginwith">Login with<br />social network</span>
+
+   <button class="social-signin facebook">Log in with facebook</button>
+   <button type="submit" class="social-signin twitter">Log in with Twitter</button>
+   <button class="social-signin google">Log in with Google+</button>
+ </div>
+ <div class="or">OR</div>
+</div>
+
+{% endblock %}
