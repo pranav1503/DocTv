@@ -74,7 +74,7 @@
 		opacity: 0.4;
 	}
 
-	.top-img-text-heading{
+	.top-imgborder:1px solid black-text-heading{
 		padding: 10px;
 		position: absolute;
 		top: 38%;
@@ -358,6 +358,7 @@ ul.errorlist{
 }
 
 @media only screen and (max-width: 1280px) {
+
 	.nav-ul-comp{
 		display: none;
 	}

@@ -1,14 +1,15 @@
-{% extends "dash.html "%}
+{% extends "dash.html" %}
 
 {% block dash_content %}
 <h1>Welcome Dr.{{ user.first_name}} {{ user.last_name }}</h1>
 <br><br><br>
 <ol>
 {% for list in time_slot_list %}
-  <div class="jumbotron" style="margin:auto; width:60%">
-    <li style="font-size:40px">
-      <h2>Time Slot Unbooked</h2>
+  <div class="jumbotron" style="margin:auto; width:60%; margin-top:20px;">
+    <li style="font-size:4vh">
+      <h2 style="font-size:4vh">Time Slot Unbooked</h2>
       <h3>{{ list.time_slot_available }}</h3>
+      <a style="padding:10px;" href="#"><i class="fas fa-trash"></i></a>
       </li>
   </div>
   {% empty %}
